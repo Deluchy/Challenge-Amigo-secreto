@@ -8,6 +8,9 @@ El usuario deberá agregar nombres mediante un campo de texto y un botón "Añad
 
 <img width="927" height="482" alt="pantalla" src="https://github.com/user-attachments/assets/98678cee-c912-4067-a2d5-e79e2b632404" />
 
+Boton de "Sortear Amigo"
+<img width="326" height="78" alt="sortear-amigo" src="https://github.com/user-attachments/assets/4a4dc446-b624-463b-a8c4-afa54af8c363" />
+
 Fucionalidades:
 Agregar nombres: Los usuarios escribirán el nombre de un amigo en un campo de texto y lo agregarán a una lista visible al hacer clic en "Añadir".
 
