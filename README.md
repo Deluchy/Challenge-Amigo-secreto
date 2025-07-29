@@ -20,3 +20,28 @@ Visualizar la lista: Los nombres ingresados aparecerán en una lista debajo del 
 
 Sorteo aleatorio: Al hacer clic en el botón "Sortear Amigo", se seleccionará aleatoriamente un nombre de la lista y se mostrará en la página.
 <img width="450" height="277" alt="amigo-secreto" src="https://github.com/user-attachments/assets/631eb1db-1ebd-47f3-a5e0-9eaacb643717" />
+
+Se añadio Función para agregar un amigo a la lista
+
+```
+function agregarAmigo() {
+    const añadirAmigo = document.getElementById('amigo');
+    const nombreAmigo = añadirAmigo.value.trim();
+    // Valida que el campo escriba un nombre no esté vacío o contenga espacio en blanco.
+    if (nombreAmigo === '') {
+        alert('Por favor, no dejar el espacio en blanco');
+        return;
+    }
+    // Evitar Nombres duplicados
+    if (listaAmigos.includes(nombreAmigo)) {
+        alert('Este nombre ya está en la lista, por favor ingrese otro nombre');
+        return;
+    }
+    // Agregar el nombre al listaAmigos.
+    listaAmigos.push(nombreAmigo);
+    // Limpiar el añadirAmigo luego de presionar el botón Añadir.
+    añadirAmigo.value = '';
+    // Actualizar la lista visual para mostrar los amigos agregados.
+    actualizarListaAmigos();
+}
+```
