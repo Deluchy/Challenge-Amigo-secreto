@@ -27,7 +27,61 @@ function agregarAmigo() {
     // Limpiar el añadirAmigo luego de presionar el botón Añadir.
     añadirAmigo.value = '';
     
-    // Actualizar la lista visual para mostrar los amigos agregados.
+    // Actualiza la lista visual para mostrar los amigos agregados.
     actualizarListaAmigos();
 }
 
+// Función para actualizar la lista visual de amigos
+function actualizarListaAmigos() {
+    const listaAmigosElement = document.getElementById('listaAmigos');
+    listaAmigosElement.innerHTML = '';
+    
+    // Crear un elemento li por cada amigo
+    listaAmigos.forEach(amigo => {
+        const li = document.createElement('li');
+        li.textContent = amigo;
+        listaAmigosElement.appendChild(li);
+    });
+}
+
+// Función para sortear un amigo secreto y que cada uno sepa a quién le toca regalar
+// Se muestra el resultado en la lista de resultados.
+function sortearAmigo() {
+    const resultadoElement = document.getElementById('resultado');
+    resultadoElement.innerHTML = '';
+    
+    // Validar que haya al menos 2 amigos para sortear asi no se repita el sorteo de amigos.
+    if (listaAmigos.length < 2) {
+        alert('Necesitas al menos 2 amigos para realizar el sorteo');
+        return;
+    }
+    
+    // Mezclar el array de amigos
+    const listaMezclada = mezclarArray([...listaAmigos]);
+    
+    // Asignar a cada persona la siguiente en la lista (el último al primero)
+    for (let i = 0; i < listaMezclada.length; i++) {
+        const li = document.createElement('li');
+        const amigoActual = listaMezclada[i];
+        const amigoSecreto = listaMezclada[(i + 1) % listaMezclada.length];
+        
+        li.textContent = `El amigo secreto de ${amigoActual} es ${amigoSecreto}.`;
+        resultadoElement.appendChild(li);
+    }
+}
+
+// mezclarArray para mezclar el array de amigos de forma aleatoria.
+function mezclarArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Permite usar la tecla Enter para agregar un amigo.
+document.getElementById('amigo').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        agregarAmigo();
+    }
+});
