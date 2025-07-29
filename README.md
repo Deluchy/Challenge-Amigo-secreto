@@ -43,6 +43,5 @@ function agregarAmigo() {
     añadirAmigo.value = '';
     // Actualizar la lista visual para mostrar los amigos agregados.
     actualizarListaAmigos();
-```
-
 }
+```
